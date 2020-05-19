@@ -1,0 +1,38 @@
+paths:
+  /api/url-shortner/v1:
+        post:
+          summary: Url Shorten
+          description: This is the api for generating dhortened url.
+          tags: [Url Shorten]
+          consumes: [application/json]
+          produces: [application/json]
+          parameters:
+            - in: body
+              name: Request Body
+              description: Request body contains required arguments 
+              required: true
+              schema:
+               $ref: '#/definitions/urlmodel'
+          responses:
+             200:
+               description: 'After successful execution'
+               schema:
+                  type: object
+                  properties:
+                     account:
+                       type: object
+                       properties:
+                        shorten_url:
+                           type: string
+                           example: google       
+definitions:
+       urlmodel:
+         type: object
+         required:
+             - shorten_url
+             - url
+         properties:
+            shorten_url:
+              type: string
+            url:
+              type: string             
